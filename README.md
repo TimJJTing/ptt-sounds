@@ -1,6 +1,5 @@
 # frontend
-
-> A Vue.js frontend for ptt_sounds 
+> A Vue.js frontend of the project Ptt-sounds. Ptt-sounds is a project turns (composes) emotional words from users of PTT into audible frequencies.
 
 ## Build Setup
 
