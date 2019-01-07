@@ -110,7 +110,6 @@
               'content-type': 'application/json'
             }
           }
-          console.log(config);
         }
         else if (method == 'POST') {
           config = {

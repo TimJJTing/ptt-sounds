@@ -1,29 +1,77 @@
-# frontend
-> A Vue.js frontend of the project Ptt-sounds. Ptt-sounds is a project turns (composes) emotional words from users of PTT into audible frequencies.
+# PTT sounds
 
-## Build Setup
+PTT sounds is a web application that can turn an article on PTT into audible frequencies.
 
-``` bash
-# install dependencies
-npm install
+## Idea
 
-# serve with hot reload at localhost:8080
-npm run dev
+PTT is the most famous BBS in Taiwan, where one can find the public’s opinion for almost any given topic. With public’s opinion structuralized in a series of short comments and “push/boo” tags, one can read through the discussion thread to catch the public’s sentiment orientations of a topic.
 
-# build for production with minification
-npm run build
+However, reading is not the only way we feel this world. What if we can actually “hear” public’s sentiment orientations? Does it feel different from reading? Can we compose meaningful sounds from public opinion? Will a positive rated article sounds better than a negative rated article?  If the author and commenters of an article start a band, how will their music sound like? This web application is designed to answer these questions.
 
-# build for production and view the bundle analyzer report
-npm run build --report
+## How It Works in General
+A User first enters a ptt article URL in the \[Frontend\]. When the \[Backend API\] receives a valid PTT article URL, it dispatches a \[Crawler\], which crawls and re-structuralized article contents for the \[Sound Maker\]. The \[Sound Maker\] then can process structuralized data with 3 steps, tokenization, quantization (based on word polarity), and finally sonification. After the procedure is done, a media file will be generated and therefore can be referenced via the \[Frontend\].
 
-# run unit tests
-npm run unit
+## Technology Used
+### Frontend
+- Vue.js
+- Vue router
+- Bootstrap
 
-# run e2e tests
-npm run e2e
+### Backend
+#### Hosting/Environment
+- Google Cloud Compute Engine
+- Docker-Compose
 
-# run all tests
-npm test
-```
+#### Web Server
+- Nginx
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+#### API
+- Django
+- Django rest framework
+- Celery
+
+#### Crawler
+- Scrapy/Scrapinghub
+
+#### Sound Maker
+##### Tokenization
+- pandas
+- jseg/jieba
+##### Quantization
+- numpy
+- ANTUSD
+##### Sonification
+- thinkdsp (with some customized code)
+
+#### Database
+- Postgresql
+
+#### Messaging/Cache Backend
+- Redis
+
+## TODOs
+### High Priority
+- \[General\] Finish the documentation
+- \[General\] Push backend codes to GitHub
+- \[Backend-API\] Reduce restart loading time
+- \[Backend-API\] Deal with warning messages
+### Medium Priority
+- \[Backend-DB\] Migrate from container to Cloud SQL instance
+- \[Backend-API\] Serve backend static and media files with Cloud Storage buckets
+### Low Priority
+- \[Backend-Hosting\] Migrate from Nginx to Google's load balancer service
+### Might Be A Good Idea To Do
+- \[Frontend\] A interface that controls ADSR via the ADSR API to change the timbre of sounds
+- \[Frontend\] Timbre customization interfaces
+- \[Frontend\] Real-time Audio-visual feature with p5.js or d3.js
+## Credits
+### Resources
+- [Allen B. Downey](https://github.com/AllenDowney/ThinkDSP): Author of Think DSP, an awesome book for learning digital signal processing.
+- [NLPSA](http://academiasinicanlplab.github.io/): Where I acquire ANTUSD for this project.
+- [Jseg](https://github.com/amigcamel/Jseg): A better choice for tokenization in this project.
+### References
+- [Dockerizing a Full-stack Application](https://medium.com/@matthew.rosendin/dockerizing-a-full-stack-application-89a7d69e11e9)
+- [nginx配置location总结及rewrite规则写法](http://seanlook.com/2015/05/17/nginx-location-rewrite/)
+- [Voltage-Controlled Oscillator (VCO)](http://synthesizeracademy.com/voltage-controlled-oscillator-vco/)
+- [Setup caching in Django With Redis](https://boostlog.io/@nixus89896/setup-caching-in-django-with-redis-5abb7d060814730093a2eebe)
+- [Wave Generation in Python](http://blog.acipo.com/wave-generation-in-python/)
