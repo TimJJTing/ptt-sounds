@@ -14,7 +14,7 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <b-row class="justify-content-md-center mt-4 mb-4">
+    <b-row class="justify-content-center mt-4 mb-4">
       <b-col cols="8">
         <h1 id="pttsounds">Sounds of PTT</h1>
         <p>Sounds of PTT is a web application that can turn an article on PTT into audible frequencies.</p>

@@ -44,15 +44,22 @@
     <!--Table for presenting made sounds-->
     <b-row id="sound-table" align-h="center" align-v="start" class="h-100 mt-2">
       <b-col cols="12">
-        <!--TODO: sort and pagination-->
         <b-table :items="sounds"
-                  :fields="sound_fields"
-                  :current-page="currentTablePage"
-                  :per-page="perTablePage"
-                  striped hover dark>
-          <template slot="id" slot-scope="data">
-            <router-link :to="{name: 'SoundDetail', params: { id: data.value }}">
-              <a>{{data.value}}</a>
+                 :fields="sound_fields"
+                 :current-page="currentTablePage"
+                 :per-page="perTablePage"
+                 responsive="sm"
+                 striped hover dark>
+          <template slot="id" slot-scope="row">
+            <!-- If sound if still processing, route to SoundMonitor-->
+            <router-link :to=" row.item.state=='finished' ? {name: 'SoundDetail', params: { id: row.value }} : {name: 'SoundMonitor', params: { ctid: row.value }}">
+              <a>{{row.value}}</a>
+            </router-link>
+          </template>
+          <template slot="title" slot-scope="row">
+            <!-- If sound if still processing, route to SoundMonitor-->
+            <router-link :to=" row.item.state=='finished' ? {name: 'SoundDetail', params: { id: row.item.id }} : {name: 'SoundMonitor', params: { ctid: row.item.id }}">
+              <a>{{row.item.state=='finished' ? row.value : "--Composing--"}}</a>
             </router-link>
           </template>
         </b-table>
@@ -80,7 +87,13 @@
         crawlUrl: '',
         errMsg: '',
         sounds: [],
-        sound_fields: [ 'id', 'genre', 'title', 'author', 'created_dt', 'state'],
+        sound_fields: [ 
+          {key: 'id', sortable: true},
+          {key: 'genre', sortable: true},
+          {key: 'board', sortable: true},
+          {key: 'title', sortable: true},
+          {key: 'author', sortable: true}
+        ],
         currentTablePage: 1,
         perTablePage: 8
       }

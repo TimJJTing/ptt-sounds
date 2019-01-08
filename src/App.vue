@@ -43,4 +43,11 @@ export default {
 .text-pttinputgray {
   color: rgb(128, 127, 128);
 }
+a {
+  color: white;
+  font-weight: bold;
+}
+p > a {
+  border-bottom: 1px dashed white;
+}
 </style>
