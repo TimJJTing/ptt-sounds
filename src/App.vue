@@ -25,7 +25,7 @@ export default {
 .container-fluid {
   padding: 0px;
 }
-@media (max-width: 797px) {
+@media (max-width: 960px) {
   body {
     padding-left: 0px;
     padding-right: 0px;

@@ -1,15 +1,15 @@
-# PTT sounds
+# Sounds of PTT
 
-PTT sounds is a web application that can turn an article on PTT into audible frequencies.
+Sounds of PTT is a web application that can turn an article on PTT into audible frequencies.
 
 ## Idea
 
-PTT is the most famous BBS in Taiwan, where one can find the public’s opinion for almost any given topic. With public’s opinion structuralized in a series of short comments and “push/boo” tags, one can read through the discussion thread to catch the public’s sentiment orientations of a topic.
+[PTT](https://www.ptt.cc/bbs/index.html) is the most popular BBS in Taiwan, where one can find the public’s opinion for almost any given topic. With public’s opinion structuralized in a series of short comments and “push/boo” tags, one can read through the discussion thread to catch the public’s sentiment orientations of a topic.
 
-However, reading is not the only way we feel this world. What if we can actually “hear” public’s sentiment orientations? Does it feel different from reading? Can we compose meaningful sounds from public opinion? Will a positive rated article sounds better than a negative rated article?  If the author and commenters of an article start a band, how will their music sound like? This web application is designed to answer these questions.
+However, reading is not the only way we sense this universe. Just like this [inspiring project](https://www.nasa.gov/feature/goddard/2018/sounds-of-the-sun) by NASA, what if we could actually “hear” public's sentiment orientations? Does it feel different from reading? Can we compose meaningful sounds from public's opinions? Will a positive rated article sounds better than a negative rated article? If the author and commenters of an article start a band, how will their music sound like? This web application is designed to answer these questions.
 
 ## How It Works in General
-A User first enters a ptt article URL in the \[Frontend\]. When the \[Backend API\] receives a valid PTT article URL, it dispatches a \[Crawler\], which crawls and re-structuralized article contents for the \[Sound Maker\]. The \[Sound Maker\] then can process structuralized data with 3 steps, tokenization, quantization (based on word polarity), and finally sonification. After the procedure is done, a media file will be generated and therefore can be referenced via the \[Frontend\].
+A User first enters a PTT article URL in the \[Frontend\]. When the \[Backend API\] receives a valid PTT article URL, it dispatches a \[Crawler\], which crawls and re-structuralizes article contents for the \[Sound Maker\]. The \[Sound Maker\] then can process structuralized data with 3 steps, tokenization, quantization (based on sentiment polarity of words), and finally sonification. After the procedure is done, a media file will be generated and therefore can be referenced via the \[Frontend\].
 
 ## Technology Used
 ### Frontend
@@ -51,7 +51,7 @@ A User first enters a ptt article URL in the \[Frontend\]. When the \[Backend AP
 
 ## TODOs
 ### High Priority
-- \[General\] Finish the documentation
+- \[General\] Finish the README.md
 - \[General\] Push backend codes to GitHub
 - \[Backend-API\] Reduce restart loading time
 - \[Backend-API\] Deal with warning messages
@@ -61,14 +61,18 @@ A User first enters a ptt article URL in the \[Frontend\]. When the \[Backend AP
 ### Low Priority
 - \[Backend-Hosting\] Migrate from Nginx to Google's load balancer service
 ### Might Be A Good Idea To Do
-- \[Frontend\] A interface that controls ADSR via the ADSR API to change the timbre of sounds
+- \[Frontend\] An interface that controls ADSR via the ADSR API to change the timbre of sounds
 - \[Frontend\] Timbre customization interfaces
 - \[Frontend\] Real-time Audio-visual feature with p5.js or d3.js
 ## Credits
+### Inspiration and Acknowledgements
+- [Sounds of the Sun](https://www.nasa.gov/feature/goddard/2018/sounds-of-the-sun)
+- [Prof. Feng-Yang Kuo](https://www.mis.nsysu.edu.tw/~bkuo/)
+- [Yen-tzu Chang](http://www.changyentzu.com/)
 ### Resources
-- [Allen B. Downey](https://github.com/AllenDowney/ThinkDSP): Author of Think DSP, an awesome book for learning digital signal processing.
+- [Allen B. Downey](https://github.com/AllenDowney/ThinkDSP): The author of Think DSP, an awesome book for learning digital signal processing.
 - [NLPSA](http://academiasinicanlplab.github.io/): Where I acquire ANTUSD for this project.
-- [Jseg](https://github.com/amigcamel/Jseg): A better choice for tokenization in this project.
+- [Jseg](https://github.com/amigcamel/Jseg): A better choice for Chinese tokenization in this project.
 ### References
 - [Dockerizing a Full-stack Application](https://medium.com/@matthew.rosendin/dockerizing-a-full-stack-application-89a7d69e11e9)
 - [nginx配置location总结及rewrite规则写法](http://seanlook.com/2015/05/17/nginx-location-rewrite/)
