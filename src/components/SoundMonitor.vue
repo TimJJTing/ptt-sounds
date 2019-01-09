@@ -33,10 +33,6 @@
           <b-progress :value="pBarPercent" :max="pBarPercentMax" show-progress animated></b-progress><br>
           <b-row align-h="center">
             <b-col cols="4" class="mx-auto text-center">
-              <!--TODO: connect our api to cancle a task-->
-              <a>Cancle</a>
-            </b-col>
-            <b-col cols="4" class="mx-auto text-center">
               <router-link :to="{name: 'SoundList'}">
                 <a>Return</a>
               </router-link>

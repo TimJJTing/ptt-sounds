@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid id="doc-container">
+  <div class="w-100">
     <b-navbar toggleable="md" type="dark" variant="pttblue">
       <b-row no-gutters class="mx-2 w-100">
         <b-col order="1" cols="4" offset="2"
@@ -28,7 +28,7 @@
         <p>Sounds of PTT is a web application that can turn an article on PTT into audible frequencies.</p>
         <h2 id="idea">Idea</h2>
         <p><a href="https://www.ptt.cc/bbs/index.html">PTT</a> is the most famous BBS in Taiwan, where one can find the public’s opinion for almost any given topic. With public’s opinion structuralized in a series of short comments and “push/boo” tags, one can read through the discussion thread to catch the public’s sentiment orientations of a topic.</p>
-        <p>However, reading is not the only way we sense this world. Just like this <a href="https://www.nasa.gov/feature/goddard/2018/sounds-of-the-sun">inspiring project</a> by NASA, what if we could actually “hear” public's sentiment orientations? Does it feel different from reading? Can we compose meaningful sounds from public's opinions? Will a positive rated article sounds better than a negative rated article? If the author and commenters of an article start a band, how will their music sound like? This web application is designed to answer these questions.</p>
+        <p>However, reading is not the only way we sense this world. Just like the <a href="https://www.nasa.gov/feature/goddard/2018/sounds-of-the-sun">inspiring project</a> by NASA, what if we could actually “hear” public's sentiment orientations? Does it feel different from reading? Can we compose meaningful sounds from public's opinions? Will a positive rated article sounds better than a negative rated article? If the author and commenters of an article start a band, how will their music sound like? This web application is designed to answer these questions.</p>
 
         <h2 id="howitworksingeneral">How It Works in General</h2>
         <p>A User first enters a ptt article URL in the [Frontend]. When the [Backend API] receives a valid PTT article URL, it dispatches a [Crawler], which crawls and re-structuralizes article contents for the [Sound Maker]. The [Sound Maker] then can process structuralized data with 3 steps, tokenization, quantization (based on word polarity), and finally sonification. After the procedure is done, a media file will be generated and therefore can be referenced via the [Frontend].</p>
@@ -146,7 +146,7 @@
         </ul>
       </b-col>
     </b-row>
-  </b-container>
+  </div>
 </template>
 <script>
 export default {
@@ -154,7 +154,4 @@ export default {
 }
 </script>
 <style>
-#doc-container {
-  background-color: black;
-}
 </style>

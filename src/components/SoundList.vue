@@ -1,6 +1,6 @@
 <!-- Html -->
 <template>
-  <b-container fluid>
+  <div class="w-100">
     <b-navbar toggleable="md" type="dark" variant="pttblue">
       <b-row no-gutters class="mx-2 w-100">
         <b-col order="1" cols="4" offset="2"
@@ -53,7 +53,11 @@
       </b-card>
     </b-collapse>
     <!--Table for presenting made sounds-->
-    <b-row id="sound-table" align-h="center" align-v="start" class="h-100 mt-2">
+    <b-row id="sound-table"
+           align-h="center"
+           align-v="start"
+           no-gutters
+           class="h-100 mt-2">
       <b-col cols="12">
         <b-table :items="sounds"
                  :fields="sound_fields"
@@ -83,7 +87,7 @@
       </b-col>
     </b-row>
     <!-- </div> -->
-  </b-container>
+  </div>
 </template>
 <!--JS-->
 <script>
