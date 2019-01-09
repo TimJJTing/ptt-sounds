@@ -1,44 +1,55 @@
 <!-- Html -->
 <template>
   <div>
-    <!--Nav group-->
     <b-navbar toggleable="md" type="dark" variant="pttblue">
-        <b-navbar-nav class="mx-auto">
-          <b-navbar-brand tag="h1" class="mb-0 mx-auto" :to="{name: 'SoundList'}">Sounds of PTT</b-navbar-brand>
-        </b-navbar-nav>
-        <!--collapsiable nav part-->
-        <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-        <b-collapse is-nav id="nav_collapse">
-          <!-- Right aligned nav items -->
-          <b-navbar-nav class="ml-auto">
-            <b-nav-item :to="{name: 'Documentation'}" right>Documentation</b-nav-item>
+      <b-row no-gutters class="mx-2 w-100">
+        <b-col order="1" cols="4" offset="2"
+               md="4" order-md="0" offset-md="0"
+               class="text-center text-md-start">
+          <b-navbar-nav>
+            <b-navbar-brand tag="h1" :to="{name: 'SoundList'}">Sounds of PTT</b-navbar-brand>
           </b-navbar-nav>
-        </b-collapse>
-      </b-navbar>
-    <b-card :header="'Composing sound'+ctid+'...'"
-            bg-variant="dark"
-            text-variant="white"
-            class="w-50 mt-2 mx-auto">
-      <!-- subtitle -->
-      <h3 id="detail">{{ctdetail}}</h3>
-      <b-progress :value="pBarPercent" :max="pBarPercentMax" show-progress animated></b-progress><br>
-      <b-row align-h="center">
-        <b-col cols="2">
-          <!--TODO: connect our api to cancle a task-->
-          <a>Cancle</a>
         </b-col>
-        <b-col cols="2">
-          <router-link :to="{name: 'SoundList'}">
-            <a>Return</a>
-          </router-link>
-        </b-col>
-        <b-col cols="2">
-          <router-link :to="{name: 'SoundDetail', params: { id: ctid }}">
-            <a>Detail</a>
-          </router-link>
+        <b-col order="0" cols="2"
+               order-md="1" md="4" offset-md="4">
+          <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+          <b-collapse is-nav
+                      id="nav_collapse"
+                      class="justify-content-start justify-content-md-end">
+            <b-navbar-nav>
+              <b-nav-item :to="{name: 'Documentation'}">Documentation</b-nav-item>
+            </b-navbar-nav>
+          </b-collapse>
         </b-col>
       </b-row>
-    </b-card>
+    </b-navbar>
+    <b-row class="justify-content-center mx-2 mt-2">
+      <b-col cols="12" sm="10" md="8">
+        <b-card :header="'Composing sound '+ctid+' ...'"
+                bg-variant="dark"
+                text-variant="white">
+          <!-- subtitle -->
+          <h3 id="detail">{{ctdetail}}</h3>
+          <b-progress :value="pBarPercent" :max="pBarPercentMax" show-progress animated></b-progress><br>
+          <b-row align-h="center">
+            <b-col cols="4" class="mx-auto text-center">
+              <!--TODO: connect our api to cancle a task-->
+              <a>Cancle</a>
+            </b-col>
+            <b-col cols="4" class="mx-auto text-center">
+              <router-link :to="{name: 'SoundList'}">
+                <a>Return</a>
+              </router-link>
+            </b-col>
+            <b-col cols="4" class="mx-auto text-center">
+              <router-link :to="{name: 'SoundDetail', params: { id: ctid }}">
+                <a>Detail</a>
+              </router-link>
+            </b-col>
+          </b-row>
+        </b-card>
+      </b-col>
+    </b-row>
   </div>
 </template>
 

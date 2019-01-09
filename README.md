@@ -53,6 +53,7 @@ A User first enters a PTT article URL in the \[Frontend\]. When the \[Backend AP
 ### High Priority
 - \[General\] Finish the README.md
 - \[General\] Push backend codes to GitHub
+- \[Frontend\] Redesign component hierarchy
 - \[Backend-API\] Reduce restart loading time
 - \[Backend-API\] Deal with warning messages
 ### Medium Priority

@@ -1,28 +1,35 @@
 <!-- Html -->
 <template>
   <b-container fluid>
-    <!--Nav group-->
     <b-navbar toggleable="md" type="dark" variant="pttblue">
-      <b-navbar-nav class="mx-auto">
-        <b-navbar-brand tag="h1" class="mb-0 mx-auto" :to="{name: 'SoundList'}">Sounds of PTT</b-navbar-brand>
-      </b-navbar-nav>
-      <!--collapsiable nav part-->
-      <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-      <b-collapse is-nav id="nav_collapse">
-        <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto">
-          <b-nav-item v-b-toggle="'collapseInput'" right>New</b-nav-item>
-          <b-nav-item :to="{name: 'Documentation'}" right>Documentation</b-nav-item>
-        </b-navbar-nav>
-      </b-collapse>
+      <b-row no-gutters class="mx-2 w-100">
+        <b-col order="1" cols="4" offset="2"
+               md="4" order-md="0" offset-md="0"
+               class="text-center text-md-start">
+          <b-navbar-nav>
+            <b-navbar-brand tag="h1" :to="{name: 'SoundList'}">Sounds of PTT</b-navbar-brand>
+          </b-navbar-nav>
+        </b-col>
+        <b-col order="0" cols="2"
+               order-md="1" md="4" offset-md="4">
+          <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+          <b-collapse is-nav
+                      id="nav_collapse"
+                      class="justify-content-start justify-content-md-end">
+            <b-navbar-nav>
+              <b-nav-item v-b-toggle="'collapseInput'">New</b-nav-item>
+              <b-nav-item :to="{name: 'Documentation'}">Documentation</b-nav-item>
+            </b-navbar-nav>
+          </b-collapse>
+        </b-col>
+      </b-row>
     </b-navbar>
-    <!--collapsiable input part-->
     <b-collapse id="collapseInput">
       <b-card bg-variant="dark"
               text-variant="white"
               header="Create A New Sound"
               class="text-center mt-2">
-        <b-input-group prepend="Article URL">
+        <b-input-group prepend="URL">
           <b-form-input id="inputLive"
                         v-model.trim="crawlUrl"
                         type="text"
@@ -31,7 +38,11 @@
                         placeholder="https://www.ptt.cc/bbs/{board}/{article_id}.html">
           </b-form-input>
           <b-input-group-append>
-          <b-button @click="newSound" :disabled="!isValidPttUrl" variant="primary">Make</b-button>
+          <b-button @click="newSound"
+                    :disabled="!isValidPttUrl"
+                    variant="primary">
+            Make
+          </b-button>
           </b-input-group-append>
           <b-form-invalid-feedback id="inputLiveFeedback">
             <!-- This will only be shown if the preceeding input has an invalid state -->
@@ -63,12 +74,11 @@
             </router-link>
           </template>
         </b-table>
-        <b-pagination
-          size="md"
-          align="center"
-          :total-rows="sounds.length"
-          v-model="currentTablePage"
-          :per-page="perTablePage">
+        <b-pagination size="md"
+                      align="center"
+                      :total-rows="sounds.length"
+                      v-model="currentTablePage"
+                      :per-page="perTablePage">
         </b-pagination>
       </b-col>
     </b-row>
@@ -89,10 +99,7 @@
         sounds: [],
         sound_fields: [ 
           {key: 'id', sortable: true},
-          {key: 'genre', sortable: true},
-          {key: 'board', sortable: true},
-          {key: 'title', sortable: true},
-          {key: 'author', sortable: true}
+          {key: 'title', sortable: false}
         ],
         currentTablePage: 1,
         perTablePage: 8

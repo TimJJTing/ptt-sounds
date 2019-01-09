@@ -1,21 +1,29 @@
 <template>
   <b-container fluid id="doc-container">
-    <!--Nav group-->
     <b-navbar toggleable="md" type="dark" variant="pttblue">
-      <b-navbar-nav class="mx-auto">
-        <b-navbar-brand tag="h1" class="mb-0 mx-auto" :to="{name: 'SoundList'}">Sounds of PTT</b-navbar-brand>
-      </b-navbar-nav>
-      <!--collapsiable nav part-->
-      <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-      <b-collapse is-nav id="nav_collapse">
-        <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto">
-          <b-nav-item :to="{name: 'Documentation'}" right>Documentation</b-nav-item>
-        </b-navbar-nav>
-      </b-collapse>
+      <b-row no-gutters class="mx-2 w-100">
+        <b-col order="1" cols="4" offset="2"
+               md="4" order-md="0" offset-md="0"
+               class="text-center text-md-start">
+          <b-navbar-nav>
+            <b-navbar-brand tag="h1" :to="{name: 'SoundList'}">Sounds of PTT</b-navbar-brand>
+          </b-navbar-nav>
+        </b-col>
+        <b-col order="0" cols="2"
+               order-md="1" md="4" offset-md="4">
+          <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+          <b-collapse is-nav
+                      id="nav_collapse"
+                      class="justify-content-start justify-content-md-end">
+            <b-navbar-nav>
+              <b-nav-item :to="{name: 'Documentation'}">Documentation</b-nav-item>
+            </b-navbar-nav>
+          </b-collapse>
+        </b-col>
+      </b-row>
     </b-navbar>
-    <b-row class="justify-content-center mt-4 mb-4">
-      <b-col cols="8">
+    <b-row class="justify-content-center mt-4 mx-2 mb-4">
+      <b-col cols="12" sm="10" md="8">
         <h1 id="pttsounds">Sounds of PTT</h1>
         <p>Sounds of PTT is a web application that can turn an article on PTT into audible frequencies.</p>
         <h2 id="idea">Idea</h2>
@@ -90,6 +98,7 @@
         <ul>
           <li>[General] Finish the documentation</li>
           <li>[General] Push backend codes to GitHub</li>
+          <li>[Frontend] Redesign component hierarchy</li>
           <li>[Backend-API] Reduce restart loading time</li>
           <li>[Backend-API] Deal with warning messages</li>
         </ul>
